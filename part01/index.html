@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Three.js scroll effect.</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div class="webgl-canvas">
+      <canvas id="webgl-canvas" class="webgl-canvas__body"></canvas>
+    </div>
+    <script id="v-shader" type="x-shader/x-vertex">
+      varying vec2 vUv;
+
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    </script>
+    <script id="f-shader" type="x-shader/x-fragment">
+      varying vec2 vUv;
+      uniform sampler2D uTexture;
+      uniform float uImageAspect;
+      uniform float uPlaneAspect;
+
+      void main() {
+        // 画像のアスペクトとプレーンのアスペクトを比較して短い方に合わせる
+        vec2 ratio = vec2(
+          min(uPlaneAspect / uImageAspect, 1.0),
+          min((1.0 / uPlaneAspect) / (1.0 / uImageAspect), 1.0)
+        );
+
+        // 計算結果を用いて修正後のuv値を生成
+        vec2 fixedUv = vec2(
+          (vUv.x - 0.5) * ratio.x + 0.5,
+          (vUv.y - 0.5) * ratio.y + 0.5
+        );
+
+        vec3 texture = texture2D(uTexture, fixedUv).rgb;
+        gl_FragColor = vec4(texture, 1.0);
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

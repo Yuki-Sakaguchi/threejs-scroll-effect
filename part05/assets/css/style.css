@@ -6,6 +6,7 @@
 
 body {
   overscroll-behavior: none;
+  height: 100vh;
 }
 
 ul,
@@ -32,14 +33,12 @@ img {
 
 .scrollable {
   position: absolute;
-  width: 100%;
   top: 0;
   left: 0;
+  overflow-x: scroll;
 }
 
 .container {
-  width: 80vw;
-  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -58,17 +57,14 @@ img {
 }
 
 .image-list {
-  max-width: 800px;
   margin: 0 auto;
-  padding: 180px 0;
+  display: flex;
+  height: 100vh;
+  align-items: center;
 }
 
 .image-item {
-  width: 100%;
-}
-
-.image-item:not(:first-child) {
-  margin-top: 180px;
+  margin: 0 20vw;
 }
 
 .image-wrapper {
@@ -77,7 +73,8 @@ img {
 }
 
 .image-wrapper > img {
-  height: 100%;
+  width: 60vw;
+  height: auto;
   object-fit: cover;
   opacity: 0;
 }

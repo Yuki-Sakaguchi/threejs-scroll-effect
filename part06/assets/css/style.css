@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.scrollable {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.container {
+  width: 80vw;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.webgl-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.webgl-canvas__body {
+  width: 100%;
+  height: 100%;
+}
+
+.image-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 180px 0;
+}
+
+.image-item {
+  width: 100%;
+}
+
+.image-item:not(:first-child) {
+  margin-top: 180px;
+}
+
+.image-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.image-wrapper > img {
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+
+.caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.caption > h2 {
+  font-family: 'Style Script', cursive;
+  color: white;
+  font-size: 5rem;
+  transform: scale(2);
+  transition: opacity 1s, transform 1s;
+  opacity: 0;
+}
+
+.caption > h2.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.caption > p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transform: tranlateY(100%);
+  color: white;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 1s, transform 1s;
+}
+
+.image-item:hover .caption > p {
+  opacity: 1;
+  transform: translateY(0);
+}

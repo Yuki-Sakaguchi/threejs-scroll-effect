@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Three.js scroll effect.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
@@ -12,10 +15,42 @@
       <div class="scrollable">
         <div class="container">
           <ul class="image-list">
-            <li class="image-item"><a href="#" class="image-wrapper"><img src="https://source.unsplash.com/whOkVvf0_hU/" alt=""></a></li>
-            <li class="image-item"><a href="#" class="image-wrapper"><img src="https://source.unsplash.com/whOkVvf0_hU/" alt=""></a></li>
-            <li class="image-item"><a href="#" class="image-wrapper"><img src="https://source.unsplash.com/whOkVvf0_hU/" alt=""></a></li>
-            <li class="image-item"><a href="#" class="image-wrapper"><img src="https://source.unsplash.com/whOkVvf0_hU/" alt=""></a></li>
+            <li class="image-item">
+              <a href="#" class="image-wrapper">
+                <img src="https://source.unsplash.com/whOkVvf0_hU/" alt="">
+                <div class="caption">
+                  <h2 class="js-inview">File 01</h2>
+                  <p>説明文が入ります</p>
+                </div>
+              </a>
+            </li>
+            <li class="image-item">
+              <a href="#" class="image-wrapper">
+                <img src="https://source.unsplash.com/whOkVvf0_hU/" alt="">
+                <div class="caption">
+                  <h2 class="js-inview">File 02</h2>
+                  <p>説明文が入ります</p>
+                </div>
+              </a>
+            </li>
+            <li class="image-item">
+              <a href="#" class="image-wrapper">
+                <img src="https://source.unsplash.com/whOkVvf0_hU/" alt="">
+                <div class="caption">
+                  <h2 class="js-inview">File 03</h2>
+                  <p>説明文が入ります</p>
+                </div>
+              </a>
+            </li>
+            <li class="image-item">
+              <a href="#" class="image-wrapper">
+                <img src="https://source.unsplash.com/whOkVvf0_hU/" alt="">
+                <div class="caption">
+                  <h2 class="js-inview">File 04</h2>
+                  <p>説明文が入ります</p>
+                </div>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -34,7 +69,7 @@
         vec3 pos = position;
 
         // 横方向
-        float amp = 0.03; // 振幅（の役割）。大きくすると波が大きくなる
+        float amp = 0.2; // 振幅（の役割）。大きくすると波が大きくなる
         float freq = 0.01 * uTime; // 振動数（の役割）。大きくすると波が細かくなる
 
         // 縦方向
@@ -69,13 +104,14 @@
         vec2 offset = vec2(0.0, uTime * 0.0005);
         float r = texture2D(uTexture, fixedUv + offset).r;
         float g = texture2D(uTexture, fixedUv + offset * 0.5).g;
-        float b = texture2D(uTexture, fixedUv).b;
+        float b = texture2D(uTexture, fixedUv - offset).b;
         vec3 texture = vec3(r, g, b);
 
         gl_FragColor = vec4(texture, 1.0);
       }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="assets/js/in-view.min.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

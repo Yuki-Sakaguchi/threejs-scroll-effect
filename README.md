@@ -23,3 +23,7 @@ https://zenn.dev/bokoko33/articles/bd6744879af0d5
 - Part05
   - 横スクロールに対応
   - https://yuki-sakaguchi.github.io/threejs-scroll-effect/part05/
+- Part06
+  - タイトルと説明文を追加（こっちは普通のDOM）
+  - アニメーションも数値をいじってちょっと大袈裟に
+  - https://yuki-sakaguchi.github.io/threejs-scroll-effect/part06/

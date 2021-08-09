@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Three.js scroll effect.</title>
+    <title>Three.js scroll effect. | Part05</title>
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
@@ -40,8 +40,8 @@
         // 縦方向
         float tension = -0.001 * uTime; // 上下の貼り具合
 
-        pos.x = pos.x + sin(pos.y * PI * freq) * amp;
-        pos.y = pos.y + (cos(pos.x * PI) * tension);
+        pos.y = pos.y + sin(pos.x * PI * freq) * amp;
+        pos.x = pos.x + (cos(pos.y * PI) * tension);
 
         gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
       }
